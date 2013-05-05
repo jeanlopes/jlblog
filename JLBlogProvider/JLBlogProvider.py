@@ -7,6 +7,7 @@ Created on Sun Dec  2 19:48:31 2012
 
 import httplib2
 import json
+#import pdb
 
 class crud:
 
@@ -22,8 +23,10 @@ class crud:
             descending = '',
             startkey = '',
             endkey = ''):
+ #       pdb.set_trace()
         resp, content = self.http.request(self.db_url+url,'GET')
-
+        if resp.status == 404:
+            return None
         if resp.status == 200:
             return json.loads(content)
     

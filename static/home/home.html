@@ -7,12 +7,15 @@
    <h2> Ol&aacute; mundo cruel</h2>
    <script type="text/javascript" src="{{ url_for('static', filename='home/home.js') }}"></script> 
 	
+	{#
+	
 	<form method="post" action="/login"> 
     	{{ form.csrf_token }} 
     	{{ form.user.label }} {{ form.user(**{'data-foo':'bar', 'placeholder': form.userLabel, 'class':'input-small', 'autofocus':'autofocus'}) }}
     	{{ form.password.label }} {{form.password(size=20) }}
     	<input type="submit" value="Go"> 
-	</form> 
+	</form>
+	#} 
 	
 {% endblock %} 
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import date
-from utils import enum
+from infra.utils import enum
 
 class PostModel(object):
     
