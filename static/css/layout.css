@@ -1,0 +1,37 @@
+
+/* Search do menu 
+ul.nav input {
+	margin-top: 5px;
+}
+*/
+
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+.navbar .nav {
+	float: right;
+}
+
+/*
+li.dropdown {
+	left: 540px;
+	padding-left: 100px;
+} */
+
+
+/* lista de postagens */
+.sidebar-nav {
+	padding: 9px 0;
+}
+
+@media (max-width: 980px) {
+	/* Enable use of floated navbar text */
+	.navbar-text.pull-right {
+		float: none;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+}
+

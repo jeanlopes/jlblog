@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<ul class="breadcrumb">
+	<li>
+		<a href="/amin">Admin</a><span class="divider">/</span>
+	</li>
+	<li>
+		<a href="/accounts">Contas</a><span class="divider">/</span>
+	</li>
+	<li class="active">
+		Conta
+	</li>
+</ul>
+
+
+<form method="post" class="navbar-form pull-left" action="/updateAccount">
+	{{ form.csrf_token }}
+	{{ form.author.label }} {{ form.author(**{'class':'span2', 'autofocus':'autofocus'}) }}
+	{{ form.occupation.label }} {{ form.author(**{'class':'span2'}) }}
+	{{ form.birth.label }} {{ form.birth(**{'class':'span2'}) }}
+	<input type="submit" value="Go">
+</form>
+
+<script type="text/javascript" src="{{ url_for('static', filename='admin/account.js') }}"></script>
+
+{% endblock %}
