@@ -2,14 +2,14 @@
 
 from flask import request, session, jsonify, abort
 from flask import Blueprint, render_template
-from JLBlogProvider import JLBlogProvider
-from Models import postModel
+from provider import provider
+#from Models import postModel
 from Forms import Login
-import pdb
+#import pdb
 
 admin = Blueprint('admin', __name__, template_folder='../static',static_folder='static')
 
-provider = JLBlogProvider.provider()
+provider = provider.provider()
 
 @admin.before_request
 def before_request():

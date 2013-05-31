@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from flask import request, session, jsonify, abort
+from flask import request #, session, jsonify, abort
 from flask import Blueprint, render_template
-from JLBlogProvider import JLBlogProvider
+#from provider import provider
 from Forms import Account
 import admin
 
@@ -16,6 +16,6 @@ def before_request():
 
 @account.route('/account',defaults={'page': 'account'})
 def index(page):
-    account = Account.Form(request.form)
+    account = Account.AccountForm(request.form)
     return render_template('admin/%s.html' % page, accountForm = account)
 

@@ -1,11 +1,16 @@
 
 $(document).ready(function() {    
-    ko.applyBindings({accountViewModel: new accountViewModel(), postModel : new postModel() });
+    ko.applyBindings({accountViewModel: new accountViewModel(), postModel : new postModel(),  interestsListModel : new interestsListModel()  });
     
     $('#modalLogin').on('shown', function() {
         $("#user").focus();
     })    
 });
+
+if (window.interestsListModel === undefined) {
+	console.log('InterestsListModel undefined');
+    window.InterestsListModel = function() { }
+}
 
 if (window.postModel === undefined) {
     window.postModel = function() { }
@@ -15,12 +20,13 @@ if (window.postModel === undefined) {
 function accountViewModel () {
     
     var self = this;
-
+    
 
     self.user = ko.observable($.cookie('auth') === undefined ||  $.cookie('auth') == null ? '' : $.cookie('auth'));
     self.password = ko.observable('');
     self.logged = ($.cookie('auth') === undefined ||  $.cookie('auth') == null) ? false : true;
-
+    
+    
     self.login = function () {
     //console.log(self.user());
          $.ajax({

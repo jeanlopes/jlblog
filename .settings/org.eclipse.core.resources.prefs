@@ -1,7 +1,8 @@
 eclipse.preferences.version=1
-encoding//JLBlogProvider/JLBlogProvider.py=utf-8
 encoding//admin/Forms/Account.py=utf-8
 encoding//admin/Forms/Login.py=utf-8
 encoding//admin/Models/accountModel.py=utf-8
 encoding//admin/Models/postModel.py=utf-8
+encoding//admin/account.py=utf-8
 encoding//admin/admin.py=utf-8
+encoding//provider/provider.py=utf-8

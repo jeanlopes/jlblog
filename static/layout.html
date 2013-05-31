@@ -15,8 +15,7 @@
 		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/kendo.web.min.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/knockout-2.2.1.js') }}"></script>
-		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.cookie.js') }}"></script>
-		<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.cookie.js') }}"></script>		
 		<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -87,11 +86,11 @@
 					<h3 id="myModalLabel">Fazer Login</h3>
 				</div>
 				<div  class="modal-body" data-bind="with: $root.accountViewModel" >
-					<form id="loginForm" autocomplete="off">
+					<form id="loginForm" class="form-search" autocomplete="off">
 					{% if form %}
 					{{ form.csrf_token }}
-					{{ form.user(**{'placeholder': form.userLabel, 'class':'input-small', 'autofocus':'autofocus', 'data-bind':'value: user'}) }}
-					{{ form.password(**{'class':'input-small', 'data-bind':'value: password', 'placeholder': form.passwordLabel}) }}
+					{{ form.user.label }} {{ form.user(**{'placeholder': form.userLabel, 'class':'input-small', 'autofocus':'autofocus', 'data-bind':'value: user'}) }}
+					{{ form.password.label }} {{ form.password(**{'class':'input-small', 'data-bind':'value: password', 'placeholder': form.passwordLabel}) }}
 					{% endif %}
 					</form>
 					<label class="checkbox" />
@@ -112,7 +111,7 @@
 			{% block body %}
 			{% endblock %}
 		</section>
-
+		<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
 		<script type="text/javascript" defer="defer" src="{{ url_for('static', filename='js/layout.js') }}"></script>
 	</body>
 </html>

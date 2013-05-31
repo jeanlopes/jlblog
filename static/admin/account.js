@@ -1,7 +1,10 @@
 
-var InterestsListModel = function () {
+$("#birth").kendoDatePicker()
+
+
+var interestsListModel = function () {
     this.itemToAdd = ko.observable("");
-    this.allItems = ko.observableArray([]); //"Fries", "Eggs Benedict", "Ham", "Cheese" // Initial items
+    this.allItems = ko.observableArray(["Fries", "Eggs Benedict", "Ham", "Cheese"]); //"Fries", "Eggs Benedict", "Ham", "Cheese" // Initial items
     this.selectedItems = ko.observableArray([]); //"Ham"                               // Initial selection
  	
     this.addItem = function () {
@@ -19,5 +22,3 @@ var InterestsListModel = function () {
     //    this.allItems.sort();
     //};
 };
- 
-ko.applyBindings(new BetterListModel());

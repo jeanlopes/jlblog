@@ -14,16 +14,58 @@
 	</li>
 </ul>
 
+<div class="container" >
 
-<form method="post" class="navbar-form pull-left" action="/updateAccount">
-	{{ form.csrf_token }}
-	{{ form.author.label }} {{ form.author(**{'class':'span2', 'autofocus':'autofocus'}) }}
-	{{ form.sex.label }} {{ form.sex() }}
-	{{ form.occupation.label }} {{ form.author(class_ = 'span2') }}
-	{{ form.birth.label }} {{ form.birth(class_ = 'span2') }}
-	<input type="submit" value="Go">
-</form>
+	<form method="post" class="form-actions form-horizontal" action="/updateAccount">
+		{{ accountForm.csrf_token }}
+		<div class="control-group">
+			<div class="control-label" >
+				{{ accountForm.author.label }}
+			</div>
+			<div class="controls">
+				{{ accountForm.author(**{'class':'span2', 'autofocus':'autofocus'}) }}
+			</div>
+		</div>
 
+		<div class="control-group">
+			<div class="control-label">
+				{{ accountForm.sex.label }}
+			</div>
+			<div class="controls">
+				{{ accountForm.sex(class_='span2') }}
+			</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-label">
+				{{ accountForm.occupation.label }}
+			</div>
+			<div class="controls">
+				{{ accountForm.occupation(class_ = 'span2') }}
+			</div>
+		</div>
+
+		<div class="control-group">
+			<div class="control-label">
+				{{ accountForm.birth.label }}
+			</div>
+			<div class="controls">
+				{{ accountForm.birth(class_ = '') }}
+			</div>
+		</div>
+		
+		 <div class="control-group">
+			<div class="control-label">
+				{{ accountForm.interests.label }}
+			</div>
+			<div class="controls">
+				{{ accountForm.interests.html|safe }}
+			</div>
+		</div> 
+		
+		<input type="submit" class="btn-success pull-right" value="Salvar Mudanças">
+	</form>
+</div>
 <script type="text/javascript" src="{{ url_for('static', filename='admin/account.js') }}"></script>
 
 {% endblock %}
