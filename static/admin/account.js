@@ -1,11 +1,12 @@
 
-$("#birth").kendoDatePicker()
+$("#birth").kendoDatePicker();
 
+$('#interests')[0].setCustomValidity('Adicione um item na lista');
 
 var interestsListModel = function () {
     this.itemToAdd = ko.observable("");
-    this.allItems = ko.observableArray(["Fries", "Eggs Benedict", "Ham", "Cheese"]); //"Fries", "Eggs Benedict", "Ham", "Cheese" // Initial items
-    this.selectedItems = ko.observableArray([]); //"Ham"                               // Initial selection
+    this.allItems = ko.observableArray([]); 
+    this.selectedItems = ko.observableArray([]); 
  	
     this.addItem = function () {
         if ((this.itemToAdd() != "") && (this.allItems.indexOf(this.itemToAdd()) < 0)) // Prevent blanks and duplicates
@@ -18,7 +19,4 @@ var interestsListModel = function () {
         this.selectedItems([]); // Clear selection
     };
  
-    //this.sortItems = function() {
-    //    this.allItems.sort();
-    //};
 };

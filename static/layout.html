@@ -112,6 +112,8 @@
 			{% endblock %}
 		</section>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+		{% block scripts %}
+		{% endblock %}
 		<script type="text/javascript" defer="defer" src="{{ url_for('static', filename='js/layout.js') }}"></script>
 	</body>
 </html>

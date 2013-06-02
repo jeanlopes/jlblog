@@ -7,9 +7,8 @@ $(document).ready(function() {
     })    
 });
 
-if (window.interestsListModel === undefined) {
-	console.log('InterestsListModel undefined');
-    window.InterestsListModel = function() { }
+if (window.interestsListModel === undefined) {	
+    window.interestsListModel = function() { }
 }
 
 if (window.postModel === undefined) {
