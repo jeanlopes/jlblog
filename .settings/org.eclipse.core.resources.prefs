@@ -1,7 +1,8 @@
 eclipse.preferences.version=1
-encoding//admin/Forms/Account.py=utf-8
-encoding//admin/Forms/Login.py=utf-8
-encoding//admin/Models/accountModel.py=utf-8
-encoding//admin/Models/postModel.py=utf-8
+encoding//admin/Models/Account.py=utf-8
+encoding//admin/Models/Login.py=utf-8
 encoding//admin/account.py=utf-8
 encoding//admin/admin.py=utf-8
+encoding//domain/entities/Entity.py=utf-8
+encoding//infra/widgets/listWidget.py=utf-8
+encoding/app.py=utf-8

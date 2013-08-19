@@ -4,8 +4,10 @@ $(document).ready(function() {
     
     $('#modalLogin').on('shown', function() {
         $("#user").focus();
-    })    
+    });
+    
 });
+
 
 if (window.interestsListModel === undefined) {	
     window.interestsListModel = function() { }
@@ -30,7 +32,7 @@ function accountViewModel () {
     //console.log(self.user());
          $.ajax({
             type: "POST",
-            url: 'http://127.0.0.1:5000/login',
+            url: '/login',
             data: {
             	'csrf_token': $('#csrf_token').val(), 
                 'user': self.user(),

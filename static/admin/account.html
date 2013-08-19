@@ -34,7 +34,7 @@
 			</div>
 			<div class="controls">
 			<div class="switch " data-on="danger" data-off="info" data-on-label="&nbsp;Feminino&nbsp;" data-off-label="&nbsp;Masculino&nbsp;" id="sex-toggle-button">
-				{{ accountForm.sex() }}
+				{{ accountForm.sex }}
 			</div>
 			</div>
 		</div>
@@ -53,18 +53,48 @@
 				{{ accountForm.birth.label }}
 			</div>
 			<div class="controls">
-				{{ accountForm.birth(class_ = '', type = 'date', placeholder = 'dd/mm/aaaa' ,pattern ='^(((((0[1-9])|(1\d)|(2[0-8]))\/((0[1-9])|(1[0-2])))|((31\/((0[13578])|(1[02])))|((29|30)\/((0[1,3-9])|(1[0-2])))))\/((20[0-9][0-9])|(19[0-9][0-9])))|((29\/02\/(19|20)(([02468][048])|([13579][26]))))$ ' ,required = '', title = 'data de nascimento do autor da conta') }}
+				{{ accountForm.birth(class_ = '', type = 'text', placeholder = 'aaaa-mm-dd' , title = 'data de nascimento do autor da conta') }}
 			</div>
 		</div>
 		
 		 <div class="control-group">
 			<div class="control-label">
-				{{ accountForm.interests.label }}
+				{{ selectList.label }}
 			</div>
 			<div class="controls" >
-				{{ accountForm.interests.html|safe }}
+				{{ selectList.html|safe }}
+				{% for interest in selectList.list %}
+  					<input type="hidden" name="interestsList[]" value="{{interest}}" />
+				{% endfor %}
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<div class="control-label">
+				{{ accountForm.about_me.label }}
+			</div>
+			<div class="controls">
+				{{ accountForm.about_me(class_ = '', required = '', title = 'descrição sobre o autor', rows = '6', cols = '90') }}
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<div class="control-label">
+				{{ accountForm.username.label }}
+			</div>
+			<div class="controls">
+				{{ accountForm.username(class_ = 'span2', required = '', title = 'Nome de usuário no sistema') }}				
 			</div>
 		</div> 
+		
+		<div class="control-group">
+			<div class="control-label">
+				{{ accountForm.password.label }}
+			</div>
+			<div class="controls">
+				{{ accountForm.password(class_ = 'span2',  title = 'Senha de usuário') }}
+			</div>
+		</div>
 		
 		<input type="submit" class="btn btn-success pull-right" value="Salvar Mudanças">
 	</form>

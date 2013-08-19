@@ -1,11 +1,21 @@
+# -*- coding: utf-8 -*-
 from wtforms.widgets.core import html_params
 import re, htmlentitydefs
 
-def list_widget(**kwargs):
+def list_widget(**kwargs):    
     
     div_class = kwargs.pop('div_class')
     field_model = kwargs.pop('model')
     field_id_select = kwargs.pop('id_select')
+
+    if kwargs.has_key('options'):
+        options = kwargs.pop('options')
+    else:
+        options = list()
+        
+    if type(options) != list:
+        NameError('Opções da lista precisam ser do tipo list - Valor passado: ' + str(type(options)) )
+    
     html = [u'<div  %s>' % html_params(**{'data-bind': 'with: $root.' + field_model, 'class': div_class})]
     html.append(u'<input %s/>' % html_params(**{'type':'text','data-bind': "value:itemToAdd, valueUpdate: 'afterkeydown'"}))
     html.append(u'&nbsp;')
@@ -13,12 +23,16 @@ def list_widget(**kwargs):
     html.append(u'Adicionar')
     html.append(u'</button>')    
     html.append(u'<h6>Seus interesses</h6>')
-    html.append(u'<select %s>' % html_params(**{'id': field_id_select, 'name': field_id_select, 'required':'' ,'multiple': 'multiple', 'height': 5, 'data-bind': 'options:allItems, selectedOptions:selectedItems'}))
+    html.append(u'<select %s>' % html_params(**{'id': field_id_select, 'name': field_id_select ,'multiple': 'multiple', 'height': 5, 'data-bind': 'options:allItems, selectedOptions:selectedItems'}))
+    if (options):        
+        for option in options:
+            html.append('<option value="%s">%s</option>' % (option, option))
+    
     html.append(u'</select>')
     html.append(u'<div>')
     html.append(u'<button %s>' % html_params(**{'class': 'btn btn-mini btn-danger', 'data-bind':'click: removeSelected, enable: selectedItems().length > 0'}))
     html.append(u'Remover')
-    html.append(u'</button>')        
+    html.append(u'</button>')
     html.append(u'</div>')
     html.append(u'</div>')
    

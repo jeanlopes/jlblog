@@ -2,42 +2,37 @@
 
 from flask import request, session, jsonify, abort
 from flask import Blueprint, render_template
-from provider import provider
-#from Models import postModel
-from Forms import Login
+from Models import Login 
+from domain.entities import Account
 #import pdb
 
 admin = Blueprint('admin', __name__, template_folder='../static',static_folder='static')
 
-provider = provider.provider()
 
 @admin.before_request
 def before_request():
-    if not request.form and not session.get('user'):
-        #print 'list is empty'
-        return abort(401)
-    #else:
-        #print 'session.get(user)' #   print session.get('user')
+    if not request.form and not session['user']:        
+        return abort(401)    
     return
 
 
 @admin.route('/login',defaults={'page': 'login'}, methods=['POST'])
 def login(page):
     #pdb.set_trace()
-    form = Login.LoginForm(request.form)
-    auth = provider.auth_user(form['user'].data, form['password'].data)
-    if form.validate() and auth:
-        session['user'] = True
-        print 'validou'
-        return jsonify(success='true')
-    else:
-        print 'nao validou'
-        errors = form.errors
-        if not auth and errors == {}:
-            errors['correctData'] = 'Usuario ou Senha invalidos'
-                   
+    form = Login.LoginModel(request.form)
+    errors = form.errors
+    if form.validate():
+        account = Account.Account.get_by_username(form.user.data)
+        if  len(account) > 0 and form.password.data == account.password:            
+            session['user'] = account.id
+            return jsonify(success='true')
+        else:
+            errors['correctData'] = u'Usuário ou Senha inválidos.'
+    else:        
+        if len(account) == 0 and errors == {}:
+            errors['correctData'] = u'Usuário não encontrado'                    
+        
         return jsonify(success='false', errors = errors)
-
 
 
 @admin.route('/admin',defaults={'page': 'admin'})
