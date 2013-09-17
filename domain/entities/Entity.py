@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-from domain.application import Context
+from domain.data.context import Context
 '''
 Created on 22/07/2013
 
@@ -11,7 +11,7 @@ class Entity(object):
     '''
     Classe que implementa métodos básicos a todas as entidades
     '''
-    c = Context()            
+    c = Context()
     
     def __init__(self, context, entity):
         self.context = context

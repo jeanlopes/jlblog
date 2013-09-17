@@ -22,10 +22,11 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/kendo.common.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/kendo.default.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
-		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/require.js') }}"></script>
+		<!--<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/kendo.web.min.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/knockout-2.2.1.js') }}"></script>
-		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.cookie.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.cookie.js') }}"></script> -->
 		<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -121,9 +122,9 @@
 			{% block body %}
 			{% endblock %}
 		</section>
-		<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+		<!-- <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script> -->
 		{% block scripts %}
 		{% endblock %}
-		<script type="text/javascript" defer="defer" src="{{ url_for('static', filename='js/layout.js') }}"></script>
+			 <script type="text/javascript" defer="defer" src="{{ url_for('static', filename='js/layout.js') }}"></script> 
 	</body>
 </html>

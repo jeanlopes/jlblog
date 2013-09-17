@@ -10,7 +10,7 @@ from admin.admin import admin
 from admin.account import account
 from couchdbkit.client import Server
 from asq.initiators import query 
-import flask_debugtoolbar
+#import flask_debugtoolbar
 
 app = Flask(__name__)
 app.secret_key = 'parangaricotirimirruaro'
@@ -27,9 +27,10 @@ def teste():
 
 if __name__ == '__main__':
     app.debug = True
-
-# Specify the debug panels you want
-    app.config['DEBUG_TB_PANELS'] = [
+    
+    '''
+        # Specify the debug panels you want
+        app.config['DEBUG_TB_PANELS'] = [
         'flask_debugtoolbar.panels.versions.VersionDebugPanel',
         'flask_debugtoolbar.panels.timer.TimerDebugPanel',
         'flask_debugtoolbar.panels.headers.HeaderDebugPanel',
@@ -40,6 +41,8 @@ if __name__ == '__main__':
         'flask_debugtoolbar.panels.profiler.ProfilerDebugPanel',
         # Add the line profiling        
         'flask_debugtoolbar_lineprofilerpanel.panels.LineProfilerPanel'
-    ]
-    toolbar = flask_debugtoolbar.DebugToolbarExtension(app)
-    app.run()
+        ]
+        toolbar = flask_debugtoolbar.DebugToolbarExtension(app) '''
+    app.run()   
+    
+    

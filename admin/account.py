@@ -12,7 +12,6 @@ from flask.helpers import flash
 from flask import session
 from domain.entities.Account import AccountEntity
 from domain.entities.Entity import Entity
-import pdb
 #import pdb
 
 account = Blueprint('account', __name__, template_folder='../static',static_folder='static')
@@ -70,7 +69,6 @@ def save(page):
         entity.update(session['user'])
         flash('Seus dados foram atualizados com muito sucesso!')
     else:
-        pdb.set_trace()
         flash(u'O formulário não está válido, verifique erros ou incoerências')
         #flash(account.)
         
