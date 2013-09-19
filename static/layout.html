@@ -22,7 +22,6 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/kendo.common.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/kendo.default.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
-		<script type="text/javascript" src="{{ url_for('static', filename='js/require.js') }}"></script>
 		<!--<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/kendo.web.min.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/knockout-2.2.1.js') }}"></script>
@@ -87,36 +86,10 @@
 			Login
 			</a>
 		</script>
+		
+		<div data-bind="template: login"></div>
 
-		<div id="modalLogin" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					×
-				</button>
-				<h3 id="myModalLabel">Fazer Login</h3>
-			</div>
-			<div  class="modal-body" data-bind="with: $root.accountViewModel" >
-				<form id="loginForm" class="form-search" autocomplete="off">
-					{% if form %}
-					{{ form.csrf_token }}
-					{{ form.user.label }} {{ form.user(**{'placeholder': form.userLabel, 'class':'input-small', 'autofocus':'autofocus', 'data-bind':'value: user'}) }}
-					{{ form.password.label }} {{ form.password(**{'class':'input-small', 'data-bind':'value: password', 'placeholder': form.passwordLabel}) }}
-					{% endif %}
-				</form>
-				<label class="checkbox" />
-				<input type="checkbox" />
-				<label> Lembrar-me </label>
-			</div>
-			<div data-bind="with: $root.accountViewModel" class="modal-footer">
-				<!--<button class="btn" data-bind="click: forgot" data-dismiss="modal" aria-hidden="true">
-				Esqueci a senha
-				</button> -->
-				<button form="loginForm" class="btn btn-primary" data-bind="click: login">
-					Entrar
-				</button>
-			</div>
-		</div>
+		
 
 		<section class="content">
 			{% block body %}
@@ -125,6 +98,9 @@
 		<!-- <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script> -->
 		{% block scripts %}
 		{% endblock %}
-			 <script type="text/javascript" defer="defer" src="{{ url_for('static', filename='js/layout.js') }}"></script> 
+			 <script type="text/javascript" data-main="static/js/common.js" src="{{ url_for('static', filename='js/lib/require.js') }}">
+			 	require(['lib/knockout'], function(ko){});
+			 </script> 
+			 	<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
 	</body>
 </html>

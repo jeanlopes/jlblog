@@ -1,3 +1,4 @@
+/*global define, jQuery, document*/
 /*!
  * jQuery Cookie Plugin v1.3.1
  * https://github.com/carhartl/jquery-cookie
@@ -8,7 +9,7 @@
 (function (factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as anonymous module.
-		define(['jquery'], factory);
+		define(['./require-jquery'], factory);
 	} else {
 		// Browser globals.
 		factory(jQuery);
@@ -34,7 +35,8 @@
 			return config.json ? JSON.parse(s) : s;
 		} catch(er) {}
 	}
-
+	
+	$ = jQuery;
 	var config = $.cookie = function (key, value, options) {
 
 		// write
