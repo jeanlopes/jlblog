@@ -1,10 +1,17 @@
-/*global define, window*/
-define(['../lib/knockout', '../config/global', '../models/Account', '../lib/require-jquery'], function(ko, g, Account, $) {
+/*global define, window, jQuery*/
+define(['../lib/knockout'], function(ko) {
 	
 	var AccountViewModel = function(account) {
-
-
+	
+		var $ = jQuery;
 		var self = this;
+		
+		/**
+		 * @property o usuário
+		 */
+		self.user = ko.observable(account.user());
+		
+		self.password = ko.observable(account.password());
 		
 		/**
 		 * @property se existem mensagens

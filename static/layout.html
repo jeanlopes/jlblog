@@ -3,16 +3,6 @@
 	<head>
 		<meta charset="utf-8" >
 		<title>jeanlopes.info</title>
-		{% with messages = get_flashed_messages() %}
-		{% if messages %}
-		<div class="alert">
-		 <button type="button" class="close" data-dismiss="alert">&times;</button>		
-			{% for message in messages %}
-			<strong>{{ message }}</strong>
-			{% endfor %}
-		</div>
-		{% endif %}
-		{% endwith %}		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
 		<meta name="author" content="">
@@ -22,16 +12,25 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/kendo.common.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/kendo.default.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
-		<!--<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-		<script type="text/javascript" src="{{ url_for('static', filename='js/kendo.web.min.js') }}"></script>
-		<script type="text/javascript" src="{{ url_for('static', filename='js/knockout-2.2.1.js') }}"></script>
-		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.cookie.js') }}"></script> -->
 		<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 
 	</head>
 	<body>
+		
+		<!-- Mensagens -->
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		<div class="alert">
+		 <button type="button" class="close" data-dismiss="alert" >&times;</button>		
+			{% for message in messages %}
+			<strong>{{ message }}</strong>
+			{% endfor %}
+		</div>
+		{% endif %}
+		{% endwith %}
+		
 		<!-- Menu -->
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
@@ -47,7 +46,8 @@
 							<input type="text" class="input-medium search-query">
 							<a href="#buscar">Buscar</a>
 						</p>
-						<ul class="nav" data-bind="with: $root.accountViewModel">
+						<!-- data-bind="with: $root.accountViewModel" -->
+						<ul class="nav" >
 							<li class="active">
 								<a href="#">Tags</a>
 							</li>
@@ -67,40 +67,56 @@
 
 		</div>
 
-		<script type="text/html" id="dropdownTemplate">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-bind="with: $root.accountViewModel" ><i data-bind="text: user" ></i><b class="caret"></b></a>
-			<ul class="dropdown-menu">
-			<li class="nav-header">Gerenciar</li>
-			<li><a href="#">Contas</a></li>
-			<li><a href="#">Gastos</a></li>
-			<li><a href="account">Tags</a></li>
-			<li class="divider"></li>
-			<li class="nav-header">Minha conta</li>
-			<li><a href="account">Perfil</a></li>
-			<li data-bind="with: $root.accountViewModel"><a data-bind="click: logout" href="#">Sair</a></li>
-			</ul>
-		</script>
-
+		
 		<script type="text/html" id="loginTemplate">
 			<a href="#modalLogin" role="button" data-toggle="modal">
 			Login
 			</a>
 		</script>
 		
-		<div data-bind="template: login"></div>
 
-		
+		<div id="modalLogin" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						×
+					</button>
+					<h3 id="myModalLabel">Fazer Login</h3>
+				</div>
+				<!-- data-bind="with: $root.accountViewModel" -->
+				<div  class="modal-body"  >
+					<form id="loginForm" class="form-search" autocomplete="off">
+					{% if form %}
+					{{ form.csrf_token }}
+					{{ form.user.label }} {{ form.user(**{'placeholder': form.userLabel, 'class':'input-small', 'autofocus':'autofocus', 'data-bind':'value: user'}) }}
+					{{ form.password.label }} {{ form.password(**{'class':'input-small', 'data-bind':'value: password', 'placeholder': form.passwordLabel}) }}
+					{% endif %}
+					</form>
+					<label class="checkbox" />
+					<input type="checkbox" />
+					<label> Lembrar-me </label>
+				</div>
+				<div  class="modal-footer">
+					<button class="btn" data-bind="click: forgot" data-dismiss="modal" aria-hidden="true">
+						Esqueci a senha
+					</button>
+					<button form="loginForm" class="btn btn-primary" data-bind="click: $root.login">
+						Entrar
+					</button>
+				</div>
+		</div>
 
 		<section class="content">
 			{% block body %}
 			{% endblock %}
+			<section data-bind="template: 'lastInserted'"> </section>
 		</section>
-		<!-- <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script> -->
+		
+		 <script type="text/javascript" data-main="static/js/common" src="{{ url_for('static', filename='js/lib/require.js') }}"></script> 
+		
+		<!-- <pre data-bind="text: ko.toJSON($root, null, 2)"></pre> -->
+		<!-- <pre data-bind="text: console.log($root.login)"></pre> -->
 		{% block scripts %}
-		{% endblock %}
-			 <script type="text/javascript" data-main="static/js/common.js" src="{{ url_for('static', filename='js/lib/require.js') }}">
-			 	require(['lib/knockout'], function(ko){});
-			 </script> 
-			 	<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
+		{% endblock %}		
 	</body>
 </html>

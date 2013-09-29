@@ -4,66 +4,12 @@
 
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class="span3">
-			<div class="well sidebar-nav">
-				<ul class="nav nav-list">
-					<li class="nav-header">
-						Sidebar
-					</li>
-					<li class="active">
-						<a href="#">Link</a>
-					</li>
-					<li>
-						<a href="#">Link</a>
-					</li>
-					<li>
-						<a href="#">Link</a>
-					</li>
-					<li>
-						<a href="#">Link</a>
-					</li>
-					<li class="nav-header">
-						Sidebar
-					</li>
-					<li>
-						<a href="#">Link</a>
-					</li>
-					<li>
-						<a href="#">Link</a>
-					</li>
-					<li>
-						<a href="#">Link</a>
-					</li>
-					<li>
-						<a href="#">Link</a>
-					</li>
-					<li>
-						<a href="#">Link</a>
-					</li>
-					<li>
-						<a href="#">Link</a>
-					</li>
-					<li class="nav-header">
-						Sidebar
-					</li>
-					<li>
-						<a href="#">Link</a>
-					</li>
-					<li>
-						<a href="#">Link</a>
-					</li>
-					<li>
-						<a href="#">Link</a>
-					</li>
-				</ul>
-			</div><!--/.well-->
-		</div><!--/.span-->
 		<form class="navbar-form">
-			
+
 			<textarea id="editor" rows="10" cols="30" style="width:740px;height:440px">
-        	</textarea>	
+        	</textarea>
 		</form>
-		
+
 	</div>
 	<script type="text/html" id="syntaxHighlighterDropdown">
 		<div data-bind="with: $root.postModel">
@@ -99,5 +45,8 @@
 <!--/.row-fluid-->
 </div><!-- /.container-fluid-->
 
-<script type="text/javascript" src="{{ url_for('static', filename='admin/admin.js') }}"></script>
+{% block scripts %}
+<script type="text/javascript" data-main="static/js/pages/admin" src="{{ url_for('static', filename='js/lib/require.js') }}">
+</script>
+{% endblock %}		
 {% endblock %}

@@ -17,3 +17,7 @@
 	
 {% endblock %} 
 
+{% block scripts %}
+<script type="text/javascript" data-main="static/js/pages/home" src="{{ url_for('static', filename='js/lib/require.js') }}">
+</script>
+{% endblock %}		

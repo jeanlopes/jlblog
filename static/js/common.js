@@ -4,17 +4,20 @@ require(['./lib/knockout',
 		 './config/global',		 
 		 './models/Account',
 		 './viewModels/account',
-		 './lib/require-jquery',
+		 './lib/jquery.min',
 		 './lib/jquery.cookie',
 		 './extends/handlers',
-		 './lib/knockout-amd-helpers'], function(ko, g, Account, AccountViewModel) {
+		 './lib/knockout-amd-helpers',
+		 './text',
+		 './lib/bootstrap'], function(ko, g, Account, AccountViewModel) {
 	
 	'use strict';
 
 	// TODO: dar focus no userName quando for aberto o modal login
 	// TODO: trabalhar no lembrar-me quando for guardar pra valer o nome de usuário
-	//var todos = ko.utils.parseJson(window.localStorage.getItem(g.localStorageItem));
-	var account = new Account($.cookie('auth'), '');
-	ko.applyBindings(new AccountViewModel(account));
-	console.log(ko);
+
+	var account = new Account($.cookie('auth') || '', '');
+	var accountViewModel = new AccountViewModel(account);
+	ko.applyBindings(accountViewModel);
+	//console.log(ko.dataFor(document.body));
 });

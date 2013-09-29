@@ -1436,7 +1436,7 @@
         this.activeTarget = target
 
         $(this.selector)
-          .parent('.active')
+          .parent()
           .removeClass('active')
 
         selector = this.selector
@@ -1444,10 +1444,10 @@
           + this.selector + '[href="' + target + '"]'
 
         active = $(selector)
-          .parent('li')
+          .parent()
           .addClass('active')
 
-        if (active.parent('.dropdown-menu').length)  {
+        if (active.parent().length)  {
           active = active.closest('li.dropdown').addClass('active')
         }
 
@@ -1536,7 +1536,7 @@
         selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
       }
 
-      if ( $this.parent('li').hasClass('active') ) return
+      if ( $this.parent().hasClass('active') ) return
 
       previous = $ul.find('.active a').last()[0]
 
@@ -1550,7 +1550,7 @@
 
       $target = $(selector)
 
-      this.activate($this.parent('li'), $ul)
+      this.activate($this.parent(), $ul)
       this.activate($target, $target.parent(), function () {
         $this.trigger({
           type: 'shown'
@@ -1580,7 +1580,7 @@
           element.removeClass('fade')
         }
 
-        if ( element.parent('.dropdown-menu') ) {
+        if ( element.parent() ) {
           element.closest('li.dropdown').addClass('active')
         }
 
