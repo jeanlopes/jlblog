@@ -6,5 +6,6 @@ require(['../lib/ckeditor/ckeditor',
          '../config/global',
          '../models/PostModel'], function (ko, g, PostModel) {
 
-    setTimeout('window.CKEDITOR.replace(\'editor\')', 1000);
+        // TODO: colocar no lugar certo
+        //setTimeout('window.CKEDITOR.replace(\'editor\')', 1000);
 });

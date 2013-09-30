@@ -11,23 +11,16 @@ define(['../lib/knockout',
 
         var self = this;
 
-        /*
-        self.insertSyntax = function () {
-            var t = $('table.k-editor iframe').contents().find('body');
-            t.append(' &#60;pre class="brush: '+ $('#highlighter').val() +';"&#62;&#60;/pre&#62;');
-            $('#highlighter').val('');
-        };
+        self.PUBLISHED = 1;
+        self.UNPUBLISHED = 2;
+        self.DISCARTED = 3;
 
-        self.addSyntaxHighlighter = function () {
+        self.Id = 0;
+        self.Content = ko.observable("");
+        self.State = self.UNPUBLISHED;
+        self.Date = new Date();
 
-            $('ul.k-editor-toolbar')
-                .parent()
-                .append('<li style="list-style-type: none;" class="k-editor-select-box" data-bind="template: {name:\'syntaxHighlighterDropdown\'}"></li>');
-
-        }
-
-        */
-    }
+    };
 
     return PostModel;
 

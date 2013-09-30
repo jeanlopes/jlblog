@@ -1,8 +1,14 @@
 /*global define */
 
-// Author: Loïc Knuchel <loicknuchel@gmail.com>
+// Author: jean
 
 define({
 	ENTER_KEY: 13,
-	localStorageItem: 'todos-knockout-require'
+	createPostURI: '',
+    savePostURI: '',
+    deletePostURI: '',
+    listPostsURI: '',
+    publishPostURI: '',
+    unpublishPostURI: ''
+
 });
