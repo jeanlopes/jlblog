@@ -1,11 +1,14 @@
 /*global require, document*/
 
-require(['../lib/ckeditor/ckeditor',
-         '../lib/jquery.min',
-         '../lib/knockout',
+require(['../lib/knockout',
          '../config/global',
-         '../models/PostModel'], function (ko, g, PostModel) {
+         '../models/PostModel',
+         '../viewModels/admin',
+         '../common',
+         '../lib/ckeditor/ckeditor',
+         '../lib/jquery.min'], function (ko, g, PostModel, AdminViewModel, Common) {
 
-        // TODO: colocar no lugar certo
-        //setTimeout('window.CKEDITOR.replace(\'editor\')', 1000);
+    'use strict';
+    var common = new Common();
+    common.applyBindings(new AdminViewModel());
 });

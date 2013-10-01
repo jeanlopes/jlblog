@@ -1,6 +1,6 @@
 /*global require, console, $*/
 
-require(['./lib/knockout',
+define(['./lib/knockout',
 		 './config/global',		 
 		 './models/Account',
 		 './viewModels/account',
@@ -11,13 +11,34 @@ require(['./lib/knockout',
 		 './text',
 		 './lib/bootstrap'], function(ko, g, Account, AccountViewModel) {
 	
-	'use strict';
+	//'use strict';
 
 	// TODO: dar focus no userName quando for aberto o modal login
 	// TODO: trabalhar no lembrar-me quando for guardar pra valer o nome de usuário
 
-	var account = new Account($.cookie('auth') || '', '');
-	var accountViewModel = new AccountViewModel(account);
-	ko.applyBindings(accountViewModel);
-	//console.log(ko.dataFor(document.body));
+    var Common = function () {
+
+        var self = this;
+
+        self.account = new Account($.cookie('auth') || '', '');
+        self.accountViewModel = new AccountViewModel(self.account);
+        //
+
+        self.applyBindings = function (viewModel){
+
+            if (viewModel)
+            {
+                for (var prop in self.accountViewModel)
+                    viewModel[prop] = self.accountViewModel[prop];
+
+                //Object.defineProperty(viewModel, 'accountViewModel', { 'value': self.accountViewModel });
+                ko.applyBindings(viewModel);
+            }
+            else
+                ko.applyBindings(self.accountViewModel);
+        };
+    };
+
+    return Common;
+
 });

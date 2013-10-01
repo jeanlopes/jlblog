@@ -69,7 +69,7 @@
 
 		
 		<script type="text/html" id="loginTemplate">
-			<a href="#modalLogin" role="button" data-toggle="modal">
+			<a href="#modalLogin"  role="button" data-toggle="modal">
 			Login
 			</a>
 		</script>
@@ -112,9 +112,7 @@
 			<section data-bind="template: 'lastInserted'"> </section>
 		</section>
 		
-		 <script type="text/javascript" data-main="static/js/common" src="{{ url_for('static', filename='js/lib/require.js') }}"></script> 
-		
-		<!-- <pre data-bind="text: ko.toJSON($root, null, 2)"></pre> -->
+		<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
 		<!-- <pre data-bind="text: console.log($root.login)"></pre> -->
 		{% block scripts %}
 		{% endblock %}		

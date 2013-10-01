@@ -43,6 +43,4 @@ if __name__ == '__main__':
         'flask_debugtoolbar_lineprofilerpanel.panels.LineProfilerPanel'
         ]
         toolbar = flask_debugtoolbar.DebugToolbarExtension(app) '''
-    app.run()   
-    
-    
+    app.run()

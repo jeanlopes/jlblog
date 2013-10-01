@@ -11,7 +11,6 @@ define(['../lib/require-jquery',
     var AdminViewModel = function (posts) {
 
         var self = this;
-        self.listPosts();
 
         self.posts = ko.observableArray(posts | []);
 
@@ -21,12 +20,12 @@ define(['../lib/require-jquery',
                 .done(function (o) { self.posts.push(o); });
         };
 
-        self.publish = function()
+        self.publish = function(postId)
         {
 
         };
 
-        self.unpublish = function()
+        self.unpublish = function(postId)
         {
 
         };
@@ -56,7 +55,11 @@ define(['../lib/require-jquery',
         self.listPosts = function()
         {
             $.getJSON(g.listPostsURI, self.posts);
+            if (self.posts.length == 0)
+                setTimeout('window.CKEDITOR.replace(\'editor\')', 1000);
         };
+
+        self.listPosts();
     };
 
     return AdminViewModel;

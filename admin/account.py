@@ -14,7 +14,7 @@ from domain.entities.Account import AccountEntity
 from domain.entities.Entity import Entity
 #import pdb
 
-account = Blueprint('account', __name__, template_folder='../static',static_folder='static')
+account = Blueprint('account', __name__, template_folder='../static', static_folder='static')
 
 @account.before_request
 def before_request():
