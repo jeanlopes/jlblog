@@ -2,11 +2,14 @@
 
 from flask import request, session, jsonify, abort
 from flask import Blueprint, render_template
-from Models import Login 
-from domain.entities import Account
+from Models.Login import LoginModel
+from domain.application.accountService import AccountService
+from domain.application.postService import PostService
+from domain.entities.Post import Post
 #import pdb
 
 admin = Blueprint('admin', __name__, template_folder='../static', static_folder='static')
+service = PostService()
 
 
 @admin.before_request
@@ -18,19 +21,20 @@ def before_request():
 
 @admin.route('/login', methods=['POST'])
 def login():
-    form = Login.LoginModel(request.form)
+    form = LoginModel(request.form)
     errors = form.errors
     account = None
+    account_service = AccountService()
     if form.validate():
-        account = Account.Account.get_by_username(form.user.data)
+        account = account_service.get_by_username(form.user.data)  # Account.Account.get_by_username(form.user.data)
         if len(account) > 0 and form.password.data == account.password:
             session['user'] = account.id.decode()
             return jsonify(success='true')
         else:
-            errors['validação'] = u'Usuário ou Senha inválidos.'
+            errors['validation'] = u'Usuário ou Senha inválidos.'
     else:        
         if 'account' in vars() and len(account) == 0 and errors == {}:
-            errors['validação'] = u'Usuário não encontrado'
+            errors['validation'] = u'Usuário não encontrado'
         errors = form.errors          
         
     return jsonify(success='false', errors=errors)
@@ -43,36 +47,40 @@ def index(page):
 
 @admin.route('/admin/create', methods=['POST'])
 def create(post):
-    pass
+    post_service = PostService(post=post)
+    _id = post_service.create()
+    return jsonify(id=_id)
 
 
 @admin.route('/admin/publish', methods=['POST'])
-def publish(postId):
-    pass
+def publish(post_id):
+    post = service.get_by_id(post_id, Post)
+    return jsonify(post=post)
 
 
 @admin.route('/admin/unpublish', methods=['POST'])
-def unpublish(postId):
-    pass
+def unpublish(post_id):
+    service.set_published(False, post_id)
 
 
 @admin.route('/admin/discart', methods=['POST'])
-def discart(postId):
-    pass
+def discart(post_id):
+    service.delete(_id=post_id)
 
 
 @admin.route('/admin/save', methods=['PUT'])
-def save():
-    print(request.form)
+def save(post):
+    post_service = PostService(post)
+    post_service.save()
 
 
 @admin.route('/admin/openPost', methods=['GET'])
-def openPost(postId):
-    pass
+def open_post(post_id):
+    return service.get_by_id(post_id, Post)
 
 
 @admin.route('admin/listPosts', methods=['GET'])
-def listPosts():
-    pass
+def list_posts():
+    return service.list()
 
 

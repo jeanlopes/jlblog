@@ -1,6 +1,7 @@
 # coding=utf-8
 from couchdbkit import Document
 from domain.data.context import Context
+from domain.entities.Post import Post
 
 __author__ = 'jean'
 
@@ -12,6 +13,7 @@ class Repository(Document):
     """
 
     def __init__(self, entity):
+        super(Repository, self).__init__()
         self.context = Context()
 
         self.entity = entity
@@ -19,15 +21,17 @@ class Repository(Document):
 
     def create(self):
         self.entity.save()
+        return self.entity.id
 
     def update(self):
-
         doc = self.entity.get(self.entity.id, db=self.context.db)
         for g in self.entity.items():
             doc[g[0]] = g[1]
         doc.save()
 
-    def remove(self):
+    def remove(self, _id=None):
+        if _id:
+            self.entity = self.get_by_id(_id, Post)
         self.context.db.delete_doc(self.entity)
 
     #TODO: verificar se self.entity retorna o nome da entidade

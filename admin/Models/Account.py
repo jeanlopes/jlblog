@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-'''
+"""
 Created on 17/04/2013
 
 @author: jean
-'''
+"""
 import sys
 sys.path.append('/home/jean/workspace/jlblog')
 
@@ -12,6 +12,7 @@ from wtforms import Form, TextField, DateField, \
 from wtforms.validators import DataRequired
 from infra.widgets import listWidget
 from wtforms.fields.simple import PasswordField
+
 
 class AccountModel(Form):
     author = TextField(u'Autor: ',validators = [DataRequired()])

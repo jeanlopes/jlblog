@@ -4,8 +4,12 @@ from domain.repositories.accountRepository import AccountRepository
 
 class AccountService:
 
-    def __init__(self, account):
+    def __init__(self, account=None):
+        self.account = account
         self.repository = AccountRepository(account)
+
+    def get_by_id(self, _id, account):
+        self.repository.get_by_id(_id, account)
 
     def get_by_username(self, username):
 
