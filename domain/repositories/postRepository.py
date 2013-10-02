@@ -8,8 +8,10 @@ from domain.data.context import Context
 
 class PostRepository(Repository):
 
-    def __init__(self, post):
-        self.post = post
+    def __init__(self, post=None):
+        if post:
+            self.post = post
+
         super(PostRepository, self).__init__(post)
         self.context = Context
 

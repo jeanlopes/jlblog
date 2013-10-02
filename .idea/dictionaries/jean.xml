@@ -2,16 +2,24 @@
   <dictionary name="jean">
     <words>
       <w>atualizados</w>
+      <w>autor</w>
       <w>booleano</w>
       <w>básicos</w>
       <w>classe</w>
+      <w>criar</w>
       <w>dados</w>
+      <w>descartar</w>
+      <w>despublicado</w>
+      <w>despublicar</w>
       <w>deve</w>
       <w>discart</w>
+      <w>discarting</w>
       <w>encontrado</w>
       <w>entidade</w>
       <w>erros</w>
       <w>está</w>
+      <w>excluir</w>
+      <w>fechar</w>
       <w>feminino</w>
       <w>foram</w>
       <w>formulário</w>
@@ -22,9 +30,12 @@
       <w>jlblog</w>
       <w>jsonify</w>
       <w>masculino</w>
+      <w>metaclass</w>
       <w>muito</w>
       <w>métodos</w>
       <w>passado</w>
+      <w>publicado</w>
+      <w>publicar</w>
       <w>repositórios</w>
       <w>respository</w>
       <w>retorna</w>
@@ -32,6 +43,7 @@
       <w>seus</w>
       <w>sucesso</w>
       <w>todos</w>
+      <w>título</w>
       <w>unpublish</w>
       <w>usuário</w>
       <w>validação</w>

@@ -6,17 +6,20 @@ from domain.entities.Post import Post
 __author__ = 'jean'
 
 
-class Repository(Document):
+class Repository(object):
 
     """
     Classe que implementa métodos básicos a todos os repositórios
     """
 
-    def __init__(self, entity):
-        super(Repository, self).__init__()
+    def __init__(self, entity=None):
         self.context = Context()
 
-        self.entity = entity
+        if entity:
+            self.entity = entity
+        else:
+            self.entity = Document()
+
         self.entity.set_db(self.context.db)
 
     def create(self):
@@ -35,7 +38,8 @@ class Repository(Document):
         self.context.db.delete_doc(self.entity)
 
     #TODO: verificar se self.entity retorna o nome da entidade
-    def list(self):
+    def list(self, amount):
+        # colocar paginação aqui
         return self.context.db.view('main/entities', self.entity)
 
     def get_by_id(self, _id, entity):

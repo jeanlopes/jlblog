@@ -4,11 +4,11 @@
 
 define({
 	ENTER_KEY: 13,
-	createPostURI: '',
-    savePostURI: '',
-    deletePostURI: '',
-    listPostsURI: '',
-    publishPostURI: '',
-    unpublishPostURI: ''
+	createPostURI: '/admin/create',
+    savePostURI: '/admin/save',
+    deletePostURI: '/admin/discart',
+    listPostsURI: 'admin/listPosts',
+    publishPostURI: '/admin/publish',
+    unpublishPostURI: '/admin/unpublish'
 
 });

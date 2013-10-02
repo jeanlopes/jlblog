@@ -79,8 +79,8 @@ def open_post(post_id):
     return service.get_by_id(post_id, Post)
 
 
-@admin.route('admin/listPosts', methods=['GET'])
-def list_posts():
-    return service.list()
+@admin.route('/admin/listPosts', methods=['GET'])
+def list_posts(amount):
+    return service.list(amount)
 
 

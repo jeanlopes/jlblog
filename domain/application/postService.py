@@ -25,5 +25,5 @@ class PostService:
             raise NameError('O valor passado deve ser booleano - Valor passado: ' + str(type(value)))
         self.repository.set_published(value, _id)
 
-    def list(self):
-        return self.repository.list()
+    def list(self, amount):
+        return self.repository.list(amount)

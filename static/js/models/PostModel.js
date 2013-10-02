@@ -2,8 +2,7 @@
  * Created by jean on 29/09/13.
  */
 
-define(['../lib/knockout',
-        '../lib/require-jquery'], function(ko, $) {
+define(['../lib/knockout'], function(ko) {
 
     'use strict';
 
@@ -11,14 +10,20 @@ define(['../lib/knockout',
 
         var self = this;
 
-        self.PUBLISHED = 1;
-        self.UNPUBLISHED = 2;
-        self.DISCARTED = 3;
+        self.PUBLISHED = true;
+        self.UNPUBLISHED = false;
 
-        self.Id = 0;
-        self.Content = ko.observable("");
-        self.State = self.UNPUBLISHED;
-        self.Date = new Date();
+        self.selected = false;
+        self.id = 0;
+        self.content = ko.observable("");
+        self.state = self.UNPUBLISHED;
+        self.date = new Date();
+        self.author = "";
+
+        self.getTitle = function()
+        {
+            // pesquisar no content sobre o title com xpath...
+        }
 
     };
 
