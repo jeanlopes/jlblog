@@ -1,5 +1,5 @@
 /*global define*/
-define(['../lib/require-jquery','../lib/knockout', '../config/global', '../models/InterestsListModel'], function($, ko, g, InterestsList) {
+define(['../lib/require-jquery','../lib/knockout', '../config/global', './InterestsListModel'], function($, ko, g, InterestsList) {
 
 	
 	var InterestsListViewModel = function() {
