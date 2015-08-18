@@ -21,7 +21,7 @@ app.register_blueprint(account)
 
 @app.route('/teste')
 def teste():
-    s = Server('https://jeanlopes:fp87694fbr@jeanlopes.cloudant.com')
+    s = Server('https://jeanlopes:my_secret_pass@jeanlopes.cloudant.com')
     content = s.all_dbs()
     return query(content).to_str(' -- ')
 
